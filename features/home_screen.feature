@@ -1,7 +1,7 @@
 @home_screen
 Feature: Tests for Home screen functionality
 
-  @default @wip
+  @default 
   Scenario: Default values on Home screen is Foot and Centimeter
     Given I land on Home screen
     Then Left unit picker value should be "Foot"
@@ -25,3 +25,11 @@ Feature: Tests for Home screen functionality
     | "2"    | "24"   | 
     | "3"    | "36"   | 
     | "9"    | "106"  | 
+
+ 
+  Scenario: User able to add current conversion to Favorites list
+    Given I land on Home screen
+    Then I press on Add to Favorites icon
+    When I press on Menu icon
+    Then I press on Favorite conversions
+    And I verify "Length" added to Favorite conversions list

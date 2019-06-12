@@ -1,19 +1,20 @@
 Given("I land on Home screen") do
-  puts "landed on home screen"
+  find_element(id: "action_search")
+  find_element(id: "action_add_favorites")
 end
 
 When("I press on Menu icon") do
-  puts "menu icon pressed"
+  find_element(accessibility_id: "Open navigation drawer").click
 end
 
 Then("I should see left side menu") do
-  puts "I see left side menu"
+  text("Unit Converter")
 end
 
 When("I press on My conversions button") do
-  puts "My conversions button pressed"
+  text("My conversions").click
 end
 
 Then("I land on My conversions screen") do
-  puts "Landed on My conversions screen"
+  text("My conversions")
 end
