@@ -8,7 +8,8 @@ When("I press on Menu icon") do
 end
 
 Then("I should see left side menu") do
-  text("Unit Converter")
+  side_menu = text("Unit Converter").text
+  expect(side_menu).to eql "Unit Converter"
 end
 
 When("I press on My conversions button") do
@@ -16,5 +17,6 @@ When("I press on My conversions button") do
 end
 
 Then("I land on My conversions screen") do
-  text("My conversions")
+  my_conversion = find_element(class: "android.widget.TextView").text
+  expect(my_conversion).to eql "My conversions"
 end

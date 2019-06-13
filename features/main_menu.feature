@@ -1,11 +1,11 @@
 Feature: As a user I want to convert units
 
+  @main_menu
   Scenario: When I tap on menu icon, i should see left side menu
     Given I land on Home screen
     When I press on Menu icon
     Then I should see left side menu
 
-  @conversion
   Scenario: I should be able to open My conversions screen
     Given I land on Home screen
     When I press on Menu icon

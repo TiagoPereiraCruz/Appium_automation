@@ -14,7 +14,6 @@ Feature: Tests for Home screen functionality
     Then show All button should be disabled
     Then show All button should be undefined
 
-  @conversion
   Scenario Outline: Verify default conversion
     Given I land on Home screen
     When I type <target> to target text field
@@ -33,3 +32,13 @@ Feature: Tests for Home screen functionality
     When I press on Menu icon
     Then I press on Favorite conversions
     And I verify "Length" added to Favorite conversions list
+
+  @wip
+  Scenario: User able to search by existing Conversion type
+    Given I land on Home screen
+    Then I press on search icon
+    Then I type "Temperature" in search field
+    And I press return button on soft keyboard
+    Then I see "Celsius" as a current unit converter
+    Then Left unit picker value should be "Celsius"
+    And Right unit picker should be "Fahrenheit"

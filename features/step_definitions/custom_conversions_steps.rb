@@ -1,31 +1,36 @@
 Then("I press on Create your first conversion button") do
-  pending # Write code here that turns the phrase above into concrete actions
+  find_element(id: "btn_new_custom_conversion").click
 end
 
-Then("I type {string} as custom conversion name") do |string|
-  pending # Write code here that turns the phrase above into concrete actions
+Then("I type {string} as custom conversion name") do |name|
+  find_element(id: "edit_custom_conversion_category_name").send_keys(name)
 end
 
 When("I press on New unit button") do
-  pending # Write code here that turns the phrase above into concrete actions
+  find_element(id: "btn_new_custom_unit").click
 end
 
-Then("I type {string} as unit name") do |string|
-  pending # Write code here that turns the phrase above into concrete actions
+Then("I type {string} as unit name") do |unit_name|
+  find_element(id: "edit_custom_conversion_unit_dtls_name").send_keys(unit_name)
 end
 
-Then("I type {string} as unit symbol") do |string|
-  pending # Write code here that turns the phrase above into concrete actions
+Then("I type {string} as unit symbol") do |symbol_name|
+  find_element(id: "edit_custom_conversion_unit_dtls_symbol").send_keys(symbol_name)
 end
 
-Then("I type {string} as unit value") do |string|
-  pending # Write code here that turns the phrase above into concrete actions
+Then("I type {string} as unit value") do |unit_value|
+  find_element(id: "edit_custom_conversion_unit_dtls_value").send_keys(unit_value)
 end
 
-Then("I press submit checkmark on Custom conversion screen") do
-  pending # Write code here that turns the phrase above into concrete actions
+Then("I press submit checkmark on Custom conversions screen") do
+  find_element(id: "action_confirm_custom_unit").click
 end
 
-Then("I verify {string} added to My conversions list") do |string|
-  pending # Write code here that turns the phrase above into concrete actions
+When("I press on OK button on Custom conversions screen") do
+  find_element(id: "btn_custom_conversion_details_ok").click
+end
+
+Then("I verify {string} added to My conversions list") do |conversion_name|
+  added_conversion = text(conversion_name).text
+  expect(added_conversion).to eql conversion_name
 end
