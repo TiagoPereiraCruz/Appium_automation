@@ -1,6 +1,6 @@
+@main_menu
 Feature: As a user I want to convert units
 
-  @main_menu
   Scenario: When I tap on menu icon, i should see left side menu
     Given I land on Home screen
     When I press on Menu icon

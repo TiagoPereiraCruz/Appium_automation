@@ -66,13 +66,37 @@ Then("I see {string} as a current unit converter") do |current_unit|
 end
 
 Then("I select {string} from left unit picker") do |value|
-  left_picker_text = find_elements(id: "select_unit_spinner")[0].click
+  find_elements(id: "select_unit_spinner")[0].click
+  find_in_list(value)
+end
 
-  2.times {
-    Appium::TouchAction.new.swipe(start_x: 0.5, start_y: 0.2, offset_x: 0.5, offset_y: 0.8, duration: 600).perform
-  }
+Then("I select {string} from menu") do |value|
+  text(value).click
+end
 
-  until exists { text(value).click }
-    Appium::TouchAction.new.swipe(start_x: 0.5, start_y: 0.8, offset_x: 0.5, offset_y: 0.2, duration: 600).perform
-  end
+Then("I select {string} from right unit picker") do |value|
+  find_elements(id: "select_unit_spinner")[1].click
+  find_in_list(value)
+end
+
+When("I press on switch units button") do
+  find_element(id: "img_switch").click
+end
+
+Then("I should see text {string}") do |value|
+  text(value)
+end
+
+Then(/^I verify that (\d+)(?:st|nd|rd|th)? result in history list is "([^"]*)"$/) do |index, text|
+  parent_element = find_element(id: "history_conversion_list")
+  array_of_elements = parent_element.find_elements(id: "history_single_line")
+  actual_text = array_of_elements[index - 1].find_element(id: "history_item_hint").text
+
+  expect(actual_text).to eql text
+end
+
+When(/^I press delete from history at (\d+)(?:st|nd|rd|th)? row$/) do |index|
+  parent_element = find_element(id: "history_conversion_list")
+  array_of_elements = parent_element.find_elements(id: "history_single_line")
+  array_of_elements[index - 1].find_element(id: "deleteIcon").click
 end

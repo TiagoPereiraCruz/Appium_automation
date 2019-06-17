@@ -1,6 +1,6 @@
+@custom_conversions
 Feature: User able to create and manage custom conversions
-  
-  @conversion
+
   Scenario: User able to create new conversions
     Given I land on Home screen
     Then I press on Menu icon
@@ -19,3 +19,11 @@ Feature: User able to create and manage custom conversions
     Then I press submit checkmark on Custom conversions screen
     When I press on OK button on Custom conversions screen
     Then I verify "Power" added to My conversions list
+
+  @custom_conversions
+  Scenario: User able to switch values
+    Then Left unit picker value should be "Foot"
+    And Right unit picker should be "Centimeter"
+    When I press on switch units button
+    Then Left unit picker value should be "Centimeter"
+    And Right unit picker should be "Foot"
