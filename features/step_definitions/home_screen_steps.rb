@@ -49,7 +49,14 @@ Then("I verify {string} added to Favorite conversions list") do |unit_type|
 end
 
 Then("I press on search icon") do
-  find_element(id: "action_search").click
+  # find_element(id: "action_search").click
+
+  # clicando usando comando tap
+  element = find_element(id: "action_search")
+  location = element.location
+  x = location[:x]
+  y = location[:y]
+  Appium::TouchAction.new.tap(x: x, y: y).perform
 end
 
 Then("I type {string} in search field") do |text|
@@ -61,6 +68,7 @@ Then("I press return button on soft keyboard") do
 end
 
 Then("I see {string} as a header name") do |current_unit|
+  # binding.pry - debugar parte do codigo usando a gem pry
   unit_text = find_element(id: "action_bar").find_elements(class: "android.widget.TextView")[0].text
   expect(unit_text).to eql current_unit
 end

@@ -30,6 +30,7 @@ Feature: Tests for Home screen functionality
     Then I press on Favorite conversions
     And I verify "Length" added to Favorite conversions list
 
+  @wip
   Scenario: User able to search by existing Conversion type
     Then I press on search icon
     Then I type "Temperature" in search field
@@ -44,7 +45,7 @@ Feature: Tests for Home screen functionality
     Then I should see result as <result>
   Examples:
     | unit_type | amount | result    |
-    | "Inch1"    | "1"    | "2.54"    |
+    | "Inch"    | "1"    | "2.54"    |
     | "Link"    | "1"    | "20.1168" |
 
   Scenario: User able to convert values
@@ -54,7 +55,6 @@ Feature: Tests for Home screen functionality
     When I type "1" on application keyboard
     Then I should see result as "15.1416"
 
-  @wip
   Scenario: User able to cleanup converion history
     When I press on Menu icon
     Then I select "History" from menu

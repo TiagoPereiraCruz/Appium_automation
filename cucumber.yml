@@ -1,10 +1,12 @@
-custom: -t @custom_conversions --format html --out report.html -p pretty
-home: -t @home_screen --format html --out report.html -p pretty
-main: -t @main_menu --format html --out report.html -p pretty
-wip: -t @wip --format html --out report.html -p pretty
-gestures: -t @gestures --format html --out report.html -p pretty
+custom: -t @custom_conversions -p html -p pretty
+home: -t @home_screen -p html -p pretty
+main: -t @main_menu -p json -p pretty
+wip: -t @wip -p html -p pretty
+gestures: -t @gestures -p html -p pretty
 
-any: -t @custom_conversions,@home_screen,@main_menu --format html --out report.html -p progress
-strict: -t @custom_conversions -t @home_screen --format html --out report.html -p pretty
+any: -t @custom_conversions,@home_screen,@main_menu -p html -p progress
+strict: -t @custom_conversions -t @home_screen -p html -p pretty
 progress: --format progress
 pretty: --format pretty
+json: --format json --out=log/report.json
+html: --format html --out report.html
