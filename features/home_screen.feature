@@ -34,7 +34,7 @@ Feature: Tests for Home screen functionality
     Then I press on search icon
     Then I type "Temperature" in search field
     And I press return button on soft keyboard
-    Then I see "Temperature" as a current unit converter
+    Then I see "Temperature" as a header name
     Then Left unit picker value should be "Celsius"
     And Right unit picker should be "Fahrenheit"
 
@@ -58,7 +58,7 @@ Feature: Tests for Home screen functionality
   Scenario: User able to cleanup converion history
     When I press on Menu icon
     Then I select "History" from menu
-    Then I see "History" as a current unit converter
+    Then I see "History" as a header name
     Then I should see text "No history right now"
     When I press on Menu icon
     Then I select "Length" from menu

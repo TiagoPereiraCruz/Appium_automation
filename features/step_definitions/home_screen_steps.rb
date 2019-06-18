@@ -60,7 +60,7 @@ Then("I press return button on soft keyboard") do
   Appium::TouchAction.new.tap(x: 0.99, y: 0.99, count: 1).perform
 end
 
-Then("I see {string} as a current unit converter") do |current_unit|
+Then("I see {string} as a header name") do |current_unit|
   unit_text = find_element(id: "action_bar").find_elements(class: "android.widget.TextView")[0].text
   expect(unit_text).to eql current_unit
 end

@@ -36,14 +36,14 @@ Appium.promote_appium_methods Object
 
 def find_in_list(value)
   3.times {
-    Appium::TouchAction.new.swipe(start_x: 0.5, start_y: 0.2, offset_x: 0.5, offset_y: 0.8, duration: 600).perform
+    Appium::TouchAction.new.swipe(start_x: 0.5, start_y: 0.2, end_x: 0.5, end_y: 0.8, duration: 600).perform
   }
 
   current_screen = get_source # pega o conteuxo exibido na tela em formato xml
   previous_screen = ""
 
   until (exists { text(value) }) || (current_screen == previous_screen) # sai do loop de scroll na tela se o elemento existe ou se previous = current
-    Appium::TouchAction.new.swipe(start_x: 0.5, start_y: 0.8, offset_x: 0.5, offset_y: 0.2, duration: 600).perform
+    Appium::TouchAction.new.swipe(start_x: 0.5, start_y: 0.8, end_x: 0.5, end_y: 0.2, duration: 600).perform
     previous_screen = current_screen
     current_screen = get_source
   end
